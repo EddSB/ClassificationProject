@@ -13,10 +13,3 @@ import matplotlib.pyplot as plt
 
 print("Imported")
 
-def importData(filePath):
-    with open(filePath, 'rb') as fo:
-        dict = pk.load(fo, encoding='bytes')
-    return dict
-
-def Test():
-    print("This module works!")
