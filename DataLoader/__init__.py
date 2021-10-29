@@ -10,3 +10,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+def importData(filePath):
+    with open(filePath, 'rb') as fo:
+        dict = pk.load(fo, encoding='bytes')
+    return dict
