@@ -3,7 +3,7 @@
 Image Classification Project
 """
 
-from data_loader import loader
+from data_handler import data_handler as dh
 
 import pandas as pd
 
@@ -14,13 +14,12 @@ superclass_index = 14 # 'people' superclass = 14
 
 #%%
 
-train_complete_dict = loader.importData(train_filePath)
+train_complete_dict = dh.importData(train_filePath)
 
 #%% 
 
-train_dict = loader.get_superclass(train_complete_dict, superclass_index)
+train_dict = dh.get_superclass(train_complete_dict, superclass_index)
 
 #%%
-
 
 
