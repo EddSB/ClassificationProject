@@ -9,16 +9,18 @@ import pandas as pd
 
 #%% Initial parameters
 
-data_filePath = r"C:\Users\Pichau\Desktop\TensorFlow\ClassificationProject\Data\test"
+train_filePath = r"C:\Users\Pichau\Desktop\TensorFlow\ClassificationProject\Data\test"
 superclass_index = 14 # 'people' superclass = 14
 
+#%%
+
+train_complete_dict = loader.importData(train_filePath)
+
 #%% 
 
-data_dict = loader.importData(data_filePath)
-
-#%% 
-
-people_dict = loader.get_superclass(superclass_index)
+train_dict = loader.get_superclass(train_complete_dict, superclass_index)
 
 #%%
+
+
 
