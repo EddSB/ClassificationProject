@@ -5,6 +5,7 @@ Data
 """
 
 import _pickle as pk
+import numpy as np
 
 def importData(filePath):
     with open(filePath, 'rb') as fo:
@@ -28,4 +29,12 @@ def normalize_pixel_values(image_list):
         result.append(norm_img)
     return result
 
+
+def simplify_labels(train_labels, original_labels):
+    new_labels = np.zeros(len(train_labels))
+    for i in range(len(train_labels)):
+        for j in range(len(original_labels)):
+            if train_labels[i] == original_labels[j]:
+                new_labels[i] = j
+    return new_labels
     
