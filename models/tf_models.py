@@ -18,7 +18,6 @@ class Keras_sequential:
             keras.layers.Dense(100, activation=('relu')),
             keras.layers.Dense(5, activation=('softmax'))
         ])
-        print("Model built")
         
 
     def compile_model(self):
@@ -28,7 +27,6 @@ class Keras_sequential:
             loss = 'sparse_categorical_crossentropy',
             metrics = ['accuracy']
             )
-        print("Compiled model")
         
         
     def train(self, _train_images, _train_labels, _epochs):
