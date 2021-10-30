@@ -11,12 +11,21 @@ class Keras_sequential:
     model = keras.Sequential()
     
     def build(self):
+        """Builds the Keras model"""
         self.model = keras.Sequential([
             keras.layers.InputLayer(input_shape=(3072)),
             keras.layers.Dense(1000, activation=('relu')),
-            keras.layers.Dense(300, activation=('relu')),
             keras.layers.Dense(100, activation=('relu')),
             keras.layers.Dense(5, activation=('softmax'))
         ])
+        print("Model built")
         
 
+    def compile_model(self):
+        """Compiles the model"""
+        self.model.compile(
+            optimizer='adam',
+            loss = 'sparse_categorical_crossentropy',
+            metrics = ['accuracy']
+            )
+        print("Compiled model")

@@ -8,10 +8,9 @@ import numpy as np
 # from tensorflow import keras
 
 from data_handler import handler as dh
-from utilities import visuals
+# from utilities import visuals
 from configs import constants as const
-from models import tf_models 
-
+from models import tf_models
 
 #%%
 
@@ -26,21 +25,19 @@ train_labels = dh.simplify_labels(train_labels, const.FINE_LABEL_NUMBERS)
 
 #%% Image visualization
 
-img_num = 22
-visuals.display_image(train_images[img_num])
+# img_num = 22
+# visuals.display_image(train_images[img_num])
 
 #%% Building Model
 # I will start using a keras model
 
 model = tf_models.Keras_sequential()
-model.build
+model.build()
 
 
 #%% Compiling the Model
 
-model.model.compile(optimizer='adam',
-              loss = 'sparse_categorical_crossentropy',
-              metrics = ['accuracy'])
+model.compile_model()
 
 #%% Training the Model
 
