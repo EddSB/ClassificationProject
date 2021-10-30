@@ -7,10 +7,10 @@ Image Classification Project
 import numpy as np
 # from tensorflow import keras
 
-from data_handler import handler as dh
+import data_handler.handler as dh
+import configs.constants as const
+import models.tf_models as models
 # from utilities import visuals
-from configs import constants as const
-from models import tf_models
 
 #%%
 
@@ -31,7 +31,7 @@ train_labels = dh.simplify_labels(train_labels, const.FINE_LABEL_NUMBERS)
 #%% Building Model
 # I will start using a keras model
 
-model = tf_models.Keras_sequential()
+model = models.Keras_sequential()
 model.build()
 
 
