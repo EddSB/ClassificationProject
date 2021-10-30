@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 """
 Image Classification Project
 """
@@ -8,19 +8,19 @@ import numpy as np
 # from tensorflow import keras
 
 import data_handler.handler as dh
-import configs.constants as const
+import configs.constants as CONST
 import models.tf_models as models
 # from utilities import visuals
 
 #%%
 
-train_dict = dh.importData(const.TRAIN_FILEPATH)
-train_dict = dh.get_superclass(train_dict, const.SUPERCLASS_INDEX)
+train_dict = dh.importData(CONST.TRAIN_FILEPATH)
+train_dict = dh.get_superclass(train_dict, CONST.SUPERCLASS_INDEX)
 train_images = train_dict['data']
 train_images = dh.normalize_pixel_values(train_images)
 train_images = np.array(train_images)
 train_labels = train_dict['fine_labels']
-train_labels = dh.simplify_labels(train_labels, const.FINE_LABEL_NUMBERS)
+train_labels = dh.simplify_labels(train_labels, CONST.FINE_LABEL_NUMBERS)
 
 
 #%% Image visualization
@@ -41,4 +41,8 @@ model.compile_model()
 
 #%% Training the Model
 
-model.train(train_images, train_labels, 30)
+model.train(train_images, train_labels, 10)
+
+#%% Testing the model
+
+# model.test(test)
