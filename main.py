@@ -3,7 +3,7 @@
 Image Classification Project
 """
 
-from data_handler import data_handler as dh
+from data_handler import handler as dh
 from utilities import visuals
 
 import pandas as pd
@@ -22,10 +22,14 @@ train_complete_dict = dh.importData(train_filePath)
 #%% 
 
 train_dict = dh.get_superclass(train_complete_dict, superclass_index)
+train_images = train_dict['data']
 
 #%% WORK IN PROGRESS
 
-train_images = train_dict['data']
+# Normalizing Values
+
+dh.normalize_pixel_values(train_images)
+print (dh)
 
 #%% Visualizando imagens
 
