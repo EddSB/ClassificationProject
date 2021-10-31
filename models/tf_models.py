@@ -32,3 +32,5 @@ class Keras_sequential:
     def train(self, _train_images, _train_labels, _epochs):
         """Trains the model"""
         self.model.fit(_train_images, _train_labels, epochs = _epochs)
+        
+        

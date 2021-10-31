@@ -4,13 +4,13 @@ Image Classification Project
 """
 
 # import pandas as pd
-# import numpy as np
+import numpy as np
 # from tensorflow import keras
 
 import data_handler.handler as dh
 import configs.constants as CONST
 import models.tf_models as models
-from utilities import visuals
+import utilities.visuals as vis
 
 #%%
 
@@ -18,10 +18,13 @@ from utilities import visuals
 (train_images, train_labels) = dh.import_data(CONST.TRAIN_FILEPATH)
 (test_images, test_labels) = dh.import_data(CONST.TEST_FILEPATH)
 
+
+#%%
+img_num = 1
 #%% Image visualization
 
-img_num = 69
-visuals.display_image(test_images[img_num])
+img_num = img_num + 1
+vis.display_image(train_images[img_num], np.int(train_labels[img_num]))
 
 #%% Building Model
 # I will start using a keras model

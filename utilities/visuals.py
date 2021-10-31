@@ -3,8 +3,12 @@
 Module created to facilitate the visualization of data
 """
 
-def display_image(image_array):
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+import configs.constants as CONST
+
+def display_image(image_array, label):
+    
+    print("Image class: ", CONST.CLASS_NAMES[label])
     plt.figure()
     image = image_array.reshape(3,32,32)
     image = image.transpose(1, 2, 0)
