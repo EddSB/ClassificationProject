@@ -10,13 +10,18 @@ Image Classification Project
 import data_handler.handler as dh
 import configs.constants as CONST
 import models.tf_models as models
-import utilities.visuals as vis
+# import utilities.visuals as vis
 # import utilities.utils as utils
 
 #%% Importing Data
 
-(train_images, train_labels) = dh.import_data(CONST.TRAIN_FILEPATH)
-(test_images, test_labels) = dh.import_data(CONST.TEST_FILEPATH)
+(train_images, train_labels) = dh.load_data(CONST.TRAIN_FILEPATH)
+(test_images, test_labels) = dh.load_data(CONST.TEST_FILEPATH)
+
+#%% TESTING NEW DATA LOADING
+
+(train_images2, test_images2, 
+ train_labels2, test_labels2) = dh.import_cifar100_people()
 
 #%% Building Model
 # I will start using a keras model
