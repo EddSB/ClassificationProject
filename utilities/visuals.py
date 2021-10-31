@@ -10,8 +10,8 @@ import configs.constants as CONST
 
 def _display_image(image):
     """Displays an image from RGB image array"""
-    image = image.reshape(3,32,32)
-    image = image.transpose(1, 2, 0)
+    #image = image.reshape(3,32,32)
+    #image = image.transpose(1, 2, 0)
     plt.figure()
     plt.imshow(image)
     plt.show()
