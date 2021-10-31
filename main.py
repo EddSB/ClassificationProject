@@ -4,14 +4,14 @@ Image Classification Project
 """
 
 # import pandas as pd
-import numpy as np
+# import numpy as np
 # from tensorflow import keras
 
 import data_handler.handler as dh
 import configs.constants as CONST
 import models.tf_models as models
 import utilities.visuals as vis
-import utilities.utils as utils
+# import utilities.utils as utils
 
 #%% Importing Data
 
@@ -31,16 +31,13 @@ model.compile_model()
 
 #%% Training the Model
 
-model.train(train_images, train_labels, 1)
+model.train(train_images, train_labels, 12)
 
 #%% Testing the model
 
 print("\n Test Run:")
-
 loss, acc = model.test(test_images, test_labels)
-
 print("loss = ", loss, ", acc = ", acc)
-# model.test(test)
 
 #%% Predictiong one image
 
@@ -48,9 +45,8 @@ predictions = model.predict(test_images)
 
 #%% Showing predictions
 
-observed_index = 400
-
-vis.compare_result(observed_index, train_images, train_labels, predictions)
+#observed_index = 238
+#vis.compare_result(observed_index, test_images, test_labels, predictions)
 
 
 

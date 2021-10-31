@@ -13,7 +13,8 @@ class Keras_sequential:
     def build(self):
         """Builds the Keras model"""
         self.model = keras.Sequential([
-            keras.layers.InputLayer(input_shape=(3072)),
+            #keras.layers.InputLayer(input_shape=(3072)),
+            keras.layers.Dense(3072, activation=('relu')),
             keras.layers.Dense(1000, activation=('relu')),
             keras.layers.Dense(100, activation=('relu')),
             keras.layers.Dense(5, activation=('softmax'))
