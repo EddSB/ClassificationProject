@@ -11,20 +11,12 @@ import data_handler.handler as dh
 import configs.constants as CONST
 import models.tf_models as models
 import utilities.visuals as vis
+import utilities.utils as utils
 
-#%%
-
+#%% Importing Data
 
 (train_images, train_labels) = dh.import_data(CONST.TRAIN_FILEPATH)
 (test_images, test_labels) = dh.import_data(CONST.TEST_FILEPATH)
-
-
-#%%
-img_num = 1
-#%% Image visualization
-
-img_num = 2
-vis.display_image(train_images[img_num], np.int(train_labels[img_num]))
 
 #%% Building Model
 # I will start using a keras model
@@ -39,7 +31,7 @@ model.compile_model()
 
 #%% Training the Model
 
-model.train(train_images, train_labels, 10)
+model.train(train_images, train_labels, 1)
 
 #%% Testing the model
 
@@ -50,21 +42,15 @@ loss, acc = model.test(test_images, test_labels)
 print("loss = ", loss, ", acc = ", acc)
 # model.test(test)
 
-#%% Checking one image
+#%% Predictiong one image
 
-predictions = model.predict(train_images)
+predictions = model.predict(test_images)
 
 #%% Showing predictions
 
-observed_index = 184
-predict_index = np.argmax(predictions[observed_index])
+observed_index = 400
 
-i = np.argmax( predictions[observed_index])
-
-vis.comparative(train_images[observed_index],
-                train_labels[observed_index],
-                predict_index)
-
+vis.compare_result(observed_index, train_images, train_labels, predictions)
 
 
 
