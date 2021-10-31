@@ -3,7 +3,7 @@
 Module containing the different applicable TensorFlow models
 """
 
-from tensorflow import keras
+import tensorflow.keras as keras
 
 
 class Keras_sequential:
@@ -29,12 +29,20 @@ class Keras_sequential:
             )
         
         
-    def train(self, _train_images, _train_labels, _epochs):
+    def train(self, train_images, train_labels, epochs):
         """Trains the model"""
-        self.model.fit(_train_images, _train_labels, epochs = _epochs)
+        self.model.fit(train_images, train_labels, epochs = epochs)
+       
         
     def test(self, _test_images, _test_labels):
+        """Tests the model"""
         loss, acc = self.model.evaluate(_test_images, 
                                         _test_labels,
                                         verbose = 1)
         return (loss, acc)
+    
+        
+    def predict(self, images):
+        """Evaluates the model's accuracy """
+        predictions = self.model.predict(images)
+        return predictions

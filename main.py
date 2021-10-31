@@ -23,7 +23,7 @@ import utilities.visuals as vis
 img_num = 1
 #%% Image visualization
 
-img_num = img_num + 1
+img_num = 2
 vis.display_image(train_images[img_num], np.int(train_labels[img_num]))
 
 #%% Building Model
@@ -43,10 +43,38 @@ model.train(train_images, train_labels, 10)
 
 #%% Testing the model
 
-print("\n")
+print("\n Test Run:")
 
 loss, acc = model.test(test_images, test_labels)
 
-print ("Test Run:")
 print("loss = ", loss, ", acc = ", acc)
 # model.test(test)
+
+#%% Checking one image
+
+predictions = model.predict(train_images)
+
+#%% Showing predictions
+
+observed_index = 184
+predict_index = np.argmax(predictions[observed_index])
+
+i = np.argmax( predictions[observed_index])
+
+vis.comparative(train_images[observed_index],
+                train_labels[observed_index],
+                predict_index)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

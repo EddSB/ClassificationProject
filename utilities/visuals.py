@@ -2,9 +2,11 @@
 """
 Module created to facilitate the visualization of data
 """
+import numpy as np
 
 import matplotlib.pyplot as plt
 import configs.constants as CONST
+
 
 def display_image(image, label):
     print("Image class: ", CONST.CLASS_NAMES[label])
@@ -14,9 +16,10 @@ def display_image(image, label):
     plt.imshow(image)
     plt.show()
     
+    
 def comparative(image, true_label, predicted_label):
     print("Image class: ",
-          CONST.CLASS_NAMES[true_label],
+          CONST.CLASS_NAMES[np.int(true_label)],
           ", predicted: ",
           CONST.CLASS_NAMES[predicted_label])
     plt.figure()
