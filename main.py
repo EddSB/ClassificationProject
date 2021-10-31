@@ -43,4 +43,10 @@ model.train(train_images, train_labels, 10)
 
 #%% Testing the model
 
+print("\n")
+
+loss, acc = model.test(test_images, test_labels)
+
+print ("Test Run:")
+print("loss = ", loss, ", acc = ", acc)
 # model.test(test)

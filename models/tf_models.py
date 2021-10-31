@@ -33,4 +33,8 @@ class Keras_sequential:
         """Trains the model"""
         self.model.fit(_train_images, _train_labels, epochs = _epochs)
         
-        
+    def test(self, _test_images, _test_labels):
+        loss, acc = self.model.evaluate(_test_images, 
+                                        _test_labels,
+                                        verbose = 1)
+        return (loss, acc)
