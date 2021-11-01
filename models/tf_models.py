@@ -98,7 +98,7 @@ class Keras_convolutional(Model):
         self.model.add(layers.Conv2D(filter_count3, (3, 3), activation='relu'))        
         self.model.add(layers.Flatten())
         #self.model.add(layers.Dense(300, activation='relu'))
-        #self.model.add(layers.Dense(200, activation='relu'))
+        self.model.add(layers.Dense(200, activation='relu'))
         self.model.add(layers.Dense(64, activation='relu')) #64
         self.model.add(layers.Dense(output_layers))
         
