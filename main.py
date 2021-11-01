@@ -8,26 +8,25 @@ Image Classification Project
 # from tensorflow import keras
 
 import data_handler.handler as dh
-import configs.constants as CONST
+# import configs.constants as CONST
 import models.tf_models as models
-# import utilities.visuals as vis
+import utilities.visuals as vis
 # import utilities.utils as utils
 
 #%% Importing Data
 
-(train_images, train_labels) = dh.load_data(CONST.TRAIN_FILEPATH)
-(test_images, test_labels) = dh.load_data(CONST.TEST_FILEPATH)
+#(train_images, train_labels) = dh.load_data(CONST.TRAIN_FILEPATH)
+#(test_images, test_labels) = dh.load_data(CONST.TEST_FILEPATH)
 
 #%% TESTING NEW DATA LOADING
 
-(train_images2, test_images2, train_labels2, test_labels2) = dh.import_cifar100_people()
+(train_images, test_images, train_labels, test_labels) = dh.import_cifar100_people()
 
 #%% Building Model
 # I will start using a keras model
 
-model = models.Keras_sequential()
+model = models.Keras_convolutional()
 model.build()
-
 
 #%% Compiling the Model
 
@@ -35,7 +34,7 @@ model.compile_model()
 
 #%% Training the Model
 
-model.train(train_images2, train_labels2, 12)
+history = model.train(train_images, train_labels, 6)
 
 #%% Testing the model
 
@@ -47,10 +46,15 @@ print("loss = ", loss, ", acc = ", acc)
 
 predictions = model.predict(test_images)
 
+#%% Evaluating model
+
+loss, acc = model.evaluate(test_images, test_labels)
+print("\n Model accuracy: ", acc, "\n")
+
 #%% Showing predictions
 
-#observed_index = 238
-#vis.compare_result(observed_index, test_images, test_labels, predictions)
+observed_index = 286
+vis.compare_result(observed_index, test_images, test_labels, predictions)
 
 
 
