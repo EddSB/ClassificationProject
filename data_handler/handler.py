@@ -24,13 +24,15 @@ def load_data(filePath):
 
 def import_cifar100_people():
     """
-    Imports the data directly from the CIFAT-100 dataset
+    Imports the data directly from the CIFAR-100 dataset
     available from the TensorFlow datasets, and returns only
     the 'people' superclass
     """
     
-    ((train_images, train_labels), (test_images, test_labels)) = datasets.cifar100.load_data() 
-    ((_, train_coarse_labels), (_, test_coarse_labels)) = datasets.cifar100.load_data(label_mode='coarse')
+    ((train_images, train_labels), 
+     (test_images, test_labels)) = datasets.cifar100.load_data() 
+    ((_, train_coarse_labels),
+     (_, test_coarse_labels)) = datasets.cifar100.load_data(label_mode='coarse')
     train_images, train_labels = _get_superclass_from_array(
         train_images, 
         train_labels,
@@ -45,6 +47,19 @@ def import_cifar100_people():
         )
     train_labels = _simplify_labels(train_labels)
     test_labels = _simplify_labels(test_labels)
+    return (train_images, test_images, train_labels, test_labels)
+
+
+def import_cifar10():
+    """
+    Imports the data directly from the CIFAR-10 dataset
+    available from the TensorFlow datasets, and returns only
+    the 'people' superclass
+    """
+    
+    ((train_images, train_labels), 
+     (test_images, test_labels)) = datasets.cifar10.load_data() 
+
     return (train_images, test_images, train_labels, test_labels)
 
     
