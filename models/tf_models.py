@@ -87,16 +87,19 @@ class Keras_convolutional(Model):
     
     model = keras.Sequential()
     
-    def build(self, output_layers=5, filter_count1=32, filter_count2=64):
+    def build(self, output_layers=5, filter_count1=32, 
+              filter_count2=64, filter_count3=64):
         """Builds the Keras model with initial convolutional layers"""    
-        self.model.add(layers.Conv2D(filter_count1, (3, 3),activation='relu', 
+        self.model.add(layers.Conv2D(filter_count1, (2, 2),activation='relu', #(3,3)) 
                                      input_shape=(32, 32, 3)))
         self.model.add(layers.MaxPooling2D((2, 2)))
-        self.model.add(layers.Conv2D(filter_count2, (3, 3), activation='relu'))
+        self.model.add(layers.Conv2D(filter_count2, (3, 3), activation='relu')) #(3,3)
         self.model.add(layers.MaxPooling2D((2, 2)))
-        self.model.add(layers.Conv2D(64, (3, 3), activation='relu'))        
+        self.model.add(layers.Conv2D(filter_count3, (3, 3), activation='relu'))        
         self.model.add(layers.Flatten())
-        self.model.add(layers.Dense(64, activation='relu'))
+        #self.model.add(layers.Dense(300, activation='relu'))
+        #self.model.add(layers.Dense(200, activation='relu'))
+        self.model.add(layers.Dense(64, activation='relu')) #64
         self.model.add(layers.Dense(output_layers))
         
         
