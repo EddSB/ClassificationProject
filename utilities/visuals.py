@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 import configs.constants as CONST
 
 
-def _display_image(image):
+def display_image(image, label = None):
     """Displays an image from RGB image array"""
-    #image = image.reshape(3,32,32)
-    #image = image.transpose(1, 2, 0)
+    if (label != None):
+        print("Image Class: ", CONST.CLASS_NAMES[label])
     plt.figure()
     plt.imshow(image)
     plt.show()
@@ -27,7 +27,7 @@ def compare_result(index, images, true_labels, predictions):
           CONST.CLASS_NAMES[np.int(true_labels[index])],
           ", predicted: ",
           CONST.CLASS_NAMES[predicted_label])
-    _display_image(images[index])
+    display_image(images[index])
     
     
 def display_gray_image(image):
