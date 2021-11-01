@@ -3,6 +3,8 @@
 
 1) Instruções de Instalação:
 
+  - No Anaconda Comsol, executar "pip install opencv-python"
+
   - Selecionar uma pasta local onde o repositório será clonado.
   - Abrir o Git Bash na pasta selecionada.
   - Clonar o repositório com o comando 'git clone https://github.com/EddSB/ClassificationProject.git' na pasta.
