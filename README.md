@@ -12,7 +12,11 @@
 1) Introdução
 
   O objetivo deste projeto é a classificação de imagens através da utilização de redes neurais. O Dataset utilizado é o CIFAR-100, disponível em 'https://www.cs.toronto.edu/~kriz/cifar.html', restringido ao uso da superclasse 'people'.
-  
+
+
+1) Notas de Desenvolvimento:
+  Primeiramente foi estabelecida uma arquitetura básica
 
 
 
+ - normalizar os pixels entre 0 e 1 melhorou MUITO o treinamento

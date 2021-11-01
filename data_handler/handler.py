@@ -28,9 +28,8 @@ def import_cifar100_people():
     available from the TensorFlow datasets, and returns only
     the 'people' superclass
     """
-    
     ((train_images, train_labels), 
-     (test_images, test_labels)) = datasets.cifar100.load_data() 
+     (test_images, test_labels)) = datasets.cifar100.load_data()
     ((_, train_coarse_labels),
      (_, test_coarse_labels)) = datasets.cifar100.load_data(label_mode='coarse')
     train_images, train_labels = _get_superclass_from_array(
@@ -45,6 +44,7 @@ def import_cifar100_people():
         test_coarse_labels,
         CONST.SUPERCLASS_INDEX
         )
+    train_images, test_images = train_images / 255.0, test_images / 255.0
     train_labels = _simplify_labels(train_labels)
     test_labels = _simplify_labels(test_labels)
     return (train_images, test_images, train_labels, test_labels)
@@ -56,10 +56,9 @@ def import_cifar10():
     available from the TensorFlow datasets, and returns only
     the 'people' superclass
     """
-    
     ((train_images, train_labels), 
      (test_images, test_labels)) = datasets.cifar10.load_data() 
-
+    train_images, test_images = train_images / 255.0, test_images / 255.0
     return (train_images, test_images, train_labels, test_labels)
 
     

@@ -4,7 +4,7 @@ Image Classification Project
 """
 
 # import pandas as pd
-# import numpy as np
+import numpy as np
 # from tensorflow import keras
 
 import data_handler.handler as dh
@@ -20,13 +20,15 @@ import utilities.visuals as vis
 
 #%% TESTING NEW DATA LOADING
 
-(train_images, test_images, train_labels, test_labels) = dh.import_cifar100_people()
+(train_images, test_images, 
+ train_labels, test_labels) = dh.import_cifar10()
 
 #%% Building Model
 # I will start using a keras model
 
 model = models.Keras_convolutional()
-model.build()
+output_neuron_count = len(np.unique(test_labels))
+model.build(output_neuron_count)
 
 #%% Compiling the Model
 
@@ -34,7 +36,7 @@ model.compile_model()
 
 #%% Training the Model
 
-history = model.train(train_images, train_labels, 6)
+history = model.train(train_images, train_labels, 7)
 
 #%% Testing the model
 
@@ -53,7 +55,7 @@ print("\n Model accuracy: ", acc, "\n")
 
 #%% Showing predictions
 
-observed_index = 286
+observed_index = 256
 vis.compare_result(observed_index, test_images, test_labels, predictions)
 
 
