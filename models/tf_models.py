@@ -38,7 +38,7 @@ class Keras_sequential(Model):
     
     model = keras.Sequential()
     
-    def build(self):
+    def build(self, output_layers=5):
         """Builds the Keras model"""
         self.model = keras.Sequential([
             #keras.layers.InputLayer(input_shape=(3072)),
@@ -46,7 +46,7 @@ class Keras_sequential(Model):
             keras.layers.Dense(3072, activation=('relu')),
             keras.layers.Dense(1000, activation=('relu')),
             keras.layers.Dense(100, activation=('relu')),
-            keras.layers.Dense(5, activation=('softmax'))
+            keras.layers.Dense(output_layers, activation=('softmax'))
         ])
         
 
@@ -87,21 +87,17 @@ class Keras_convolutional(Model):
     
     model = keras.Sequential()
     
-    def build(self):
-        """Builds the Keras model with initial convolutional layers"""
-        
-        filters1 = 64 #32
-        filters2 = 128 #64
-        
-        self.model.add(layers.Conv2D(filters1, (3, 3),activation='relu', 
+    def build(self, output_layers=5, filter_count1=32, filter_count2=64):
+        """Builds the Keras model with initial convolutional layers"""    
+        self.model.add(layers.Conv2D(filter_count1, (3, 3),activation='relu', 
                                      input_shape=(32, 32, 3)))
         self.model.add(layers.MaxPooling2D((2, 2)))
-        self.model.add(layers.Conv2D(filters2, (3, 3), activation='relu'))
+        self.model.add(layers.Conv2D(filter_count2, (3, 3), activation='relu'))
         self.model.add(layers.MaxPooling2D((2, 2)))
         self.model.add(layers.Conv2D(64, (3, 3), activation='relu'))        
         self.model.add(layers.Flatten())
         self.model.add(layers.Dense(64, activation='relu'))
-        self.model.add(layers.Dense(10))
+        self.model.add(layers.Dense(output_layers))
         
         
     def compile_model(self):
