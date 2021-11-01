@@ -21,7 +21,7 @@ import utilities.visuals as vis
 #%% TESTING NEW DATA LOADING
 
 (train_images, test_images, 
- train_labels, test_labels) = dh.import_cifar10()
+ train_labels, test_labels) = dh.import_cifar100_people()
 
 #%% Building Model
 # I will start using a keras model
