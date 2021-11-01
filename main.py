@@ -20,8 +20,7 @@ import models.tf_models as models
 
 #%% TESTING NEW DATA LOADING
 
-(train_images2, test_images2, 
- train_labels2, test_labels2) = dh.import_cifar100_people()
+(train_images2, test_images2, train_labels2, test_labels2) = dh.import_cifar100_people()
 
 #%% Building Model
 # I will start using a keras model
@@ -36,7 +35,7 @@ model.compile_model()
 
 #%% Training the Model
 
-model.train(train_images, train_labels, 12)
+model.train(train_images2, train_labels2, 12)
 
 #%% Testing the model
 

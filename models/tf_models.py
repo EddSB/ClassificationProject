@@ -14,6 +14,7 @@ class Keras_sequential:
         """Builds the Keras model"""
         self.model = keras.Sequential([
             #keras.layers.InputLayer(input_shape=(3072)),
+            keras.layers.Flatten(),
             keras.layers.Dense(3072, activation=('relu')),
             keras.layers.Dense(1000, activation=('relu')),
             keras.layers.Dense(100, activation=('relu')),
@@ -32,6 +33,7 @@ class Keras_sequential:
         
     def train(self, train_images, train_labels, epochs):
         """Trains the model"""
+        # train_images = train_images.reshape(len(train_images), 3072)
         self.model.fit(train_images, train_labels, epochs = epochs)
        
         
